@@ -1,5 +1,14 @@
 import React from "react"
-import { LeftSidebarContainer, NavigationContainer, SidebarItemContainer, TextLabel, TwitterIconContainer, TwitterIcon, IconContainer } from "./left_sidebar_components"
+import { Link, } from "react-router-dom";
+import { 
+    LeftSidebarContainer, 
+    NavigationContainer, 
+    SidebarItemContainer, 
+    TextLabel, 
+    TwitterIconContainer, 
+    TwitterIcon, 
+    IconContainer,
+} from "./left_sidebar_components"
 import { RiBookmarkLine, RiBookmarkFill, RiTwitterFill, RiFileList2Line, RiFileList2Fill } from "react-icons/ri"
 import { FiHash } from "react-icons/fi"
 import { AiOutlineHome, AiFillHome, AiOutlineMail, AiTwotoneMail } from "react-icons/ai"
@@ -54,12 +63,6 @@ const sidebarElements = [
         iconFill: <BsFillPersonFill />,
         link: ''
     },
-    {
-        text: 'More',
-        iconLine: <CgMoreO />,
-        iconFill: <CgMoreO />,
-        link: ''
-    },
 ]
 
 export default function LeftSidebar(){
@@ -70,10 +73,12 @@ export default function LeftSidebar(){
     }
 
     const SidebarItems = () => sidebarElements.map((item) => 
-        <SidebarItemContainer key={item.text} onClick={() => handleClick(item.text)} id={item.text}>
-            <IconContainer focused={focus === item.text}>{focus === item.text ? item.iconFill : item.iconLine}</IconContainer>
-            <TextLabel><span style={{verticalAlign: "10px", color: focus === item.text ? "#1DA1F2" : "#0f1419"}}>{item.text}</span></TextLabel>
-        </SidebarItemContainer>
+        <Link to={'/' + item.text.toLowerCase()} style={{ textDecoration: 'none' }} key={item.text}>
+            <SidebarItemContainer onClick={() => handleClick(item.text)} id={item.text}>
+                <IconContainer focused={focus === item.text}>{focus === item.text ? item.iconFill : item.iconLine}</IconContainer>
+                <TextLabel><span style={{verticalAlign: "10px", color: focus === item.text ? "#1DA1F2" : "#0f1419"}}>{item.text}</span></TextLabel>
+            </SidebarItemContainer>
+        </Link>
     )
 
     return (
@@ -85,6 +90,10 @@ export default function LeftSidebar(){
             </TwitterIconContainer>
             <NavigationContainer>
                 {SidebarItems()}
+                <SidebarItemContainer onClick={() => handleClick("More")}>
+                    <IconContainer focused={focus === "More"}><CgMoreO /></IconContainer>
+                    <TextLabel><span style={{verticalAlign: "10px", color: focus === "More" ? "#1DA1F2" : "#0f1419"}}>More</span></TextLabel>
+                </SidebarItemContainer>
             </NavigationContainer>
             <LongButton width="90%" label="Tweet" />
             <CurrentUserPanel />

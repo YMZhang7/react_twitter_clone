@@ -9,7 +9,6 @@ export default function UserAtText(props){
 
 const TextContainer = styled.div`
     font-size: 15px;
-    /* font-weight: lighter; */
     color: #5B7083;
     width: fit-content;
 `

@@ -1,10 +1,10 @@
 import './App.css';
-import Homepage from "./pages/homepage"
+import TwitterWebpage from "./components/twitter_webpage"
 
 function App() {
   return (
     <div className="App">
-      <Homepage />
+      <TwitterWebpage />
     </div>
   );
 }

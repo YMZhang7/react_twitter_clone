@@ -1,8 +1,9 @@
 import styled from "styled-components"
 
 export const LeftSidebarContainer = styled.div`
-    position: relative;
-    width: 20%;
+    position: fixed;
+    top: 0px;
+    width: 250px;
     height: 100%;
     display: flex;
     flex-direction: column;

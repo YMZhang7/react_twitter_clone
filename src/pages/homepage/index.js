@@ -1,64 +1,86 @@
 import React from "react"
-import styled from "styled-components"
-import LeftSidebar from "../../components/left_sidebar"
+import NewTweetModal from "../../components/new_tweet_modal"
+import {
+    HomepageContainer,
+    HomepageBodyContainer,
+    TitleBar,
+    Divider,
+    RightSidebarContainer,
+    TweetsContainer,
+    RightsideContentContainer,
+    RightsideContentTitle,
+    WhatsHappeningEntryContainer,
+    EntryHeader,
+    EntryBody,
+    EntryFooter,
+    ShowMoreButton,
+    AcknowledgementContainer
+} from "./homepage_components"
+import TweetBox from "../../components/tweet_box"
+import { AiOutlineSearch } from "react-icons/ai"
+import Searchbar from "../../components/search_bar";
 
 export default function Homepage(){
     document.title = "Home / Twitter"
+
     return (
         <HomepageContainer>
-            <HomepageContentContainer>
-                <LeftSidebar />
-                <HomepageBody />
-                <RightSidebar />
-            </HomepageContentContainer>
+            <HomepageBodyContainer>
+                <TitleBar>Home</TitleBar>
+                <TweetsContainer>
+                    <NewTweetModal  width="100%" />
+                    <Divider />
+                    <TweetBox />
+                    <TweetBox />
+                    <TweetBox />
+                    <TweetBox />
+                    <TweetBox />
+                    <TweetBox />
+                    <TweetBox />
+                </TweetsContainer>
+            </HomepageBodyContainer>
+            <RightSidebarContainer>
+                <Searchbar />
+                <RightsideContentContainer>
+                    <RightsideContentTitle>What's happening</RightsideContentTitle>
+                    <WhatsHappeningEntryContainer>
+                        <EntryHeader>US News · Last night</EntryHeader>
+                        <EntryBody>Evan Rachel Wood and at least four other women make allegations of abuse against Marilyn Manson</EntryBody>
+                        <EntryFooter>2,527 Tweets</EntryFooter>
+                    </WhatsHappeningEntryContainer>
+                    <WhatsHappeningEntryContainer>
+                        <EntryHeader>Trending in Australia</EntryHeader>
+                        <EntryBody>Pete Evans</EntryBody>
+                        <EntryFooter>2,546 Tweets</EntryFooter>
+                    </WhatsHappeningEntryContainer>
+                    <WhatsHappeningEntryContainer>
+                        <EntryHeader>News · Trending</EntryHeader>
+                        <EntryBody>Marjorie Taylor Greene</EntryBody>
+                        <EntryFooter>261K Tweets</EntryFooter>
+                    </WhatsHappeningEntryContainer>
+                    <WhatsHappeningEntryContainer>
+                        <EntryHeader>Politics · Trending</EntryHeader>
+                        <EntryBody>hunter biden</EntryBody>
+                        <EntryFooter>24.8K Tweets</EntryFooter>
+                    </WhatsHappeningEntryContainer>
+                    <WhatsHappeningEntryContainer>
+                        <EntryHeader>Politics · Trending</EntryHeader>
+                        <EntryBody>Mitch McConnell</EntryBody>
+                        <EntryFooter>58.9K Tweets</EntryFooter>
+                    </WhatsHappeningEntryContainer>
+                    <ShowMoreButton>Show more</ShowMoreButton>
+                </RightsideContentContainer>
+
+                <RightsideContentContainer>
+                    <RightsideContentTitle>Who to follow</RightsideContentTitle>
+                    <ShowMoreButton>Show more</ShowMoreButton>
+                </RightsideContentContainer>
+                <AcknowledgementContainer>
+                    This is YM Zhang's clone of twitter. 
+                    <br/>All rights belong to Twitter, Inc.
+                </AcknowledgementContainer>
+            </RightSidebarContainer>
         </HomepageContainer>
-        
-    )
-    
-}
-
-const HomepageContainer = styled.div`
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-`
-
-const HomepageContentContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 85%;
-`
-
-
-
-
-
-function HomepageBody(){
-    return (
-        <HomepageBodyContainer>
-
-        </HomepageBodyContainer>
     )
 }
 
-const HomepageBodyContainer = styled.div`
-    width: 50%;
-    height: 100%;
-    background-color: yellow;
-`
-function RightSidebar(){
-    return (
-        <RightSidebarContainer>
-
-        </RightSidebarContainer>
-    )
-}
-
-const RightSidebarContainer = styled.div`
-    background-color: orange;
-    width: 30%;
-    height: 100%;
-`

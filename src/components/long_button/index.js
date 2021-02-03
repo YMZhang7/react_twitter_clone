@@ -9,7 +9,7 @@ export default function LongButton(props){
 
 const ButtonContainer = styled.button`
     width: ${(props) => props.width}; 
-    height: 50px; 
+    height: 40px; 
     border-radius: 50px;
     border: none;
     outline: none;
@@ -18,6 +18,7 @@ const ButtonContainer = styled.button`
     font-weight: bold;
     font-size: 15px;
     box-shadow: 2px 2px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
     &:hover{
         background-color: #0b7bc1;
     }
