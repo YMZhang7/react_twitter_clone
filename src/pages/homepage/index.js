@@ -1,31 +1,34 @@
 import React from "react"
 import NewTweetModal from "../../components/new_tweet_modal"
 import {
-    HomepageContainer,
-    HomepageBodyContainer,
+    PageContainer,
+    MiddlePartContainer,
+    RightPartContainer
+} from "../../components/page_partition"
+import {
     TitleBar,
     Divider,
-    RightSidebarContainer,
     TweetsContainer,
-    RightsideContentContainer,
-    RightsideContentTitle,
+    AcknowledgementContainer
+} from "./homepage_components"
+import TweetBox from "../../components/tweet_box"
+import Searchbar from "../../components/search_bar";
+import { 
+    RightColumnContentContainer,
+    RightColumnContentTitle,
+    ShowMoreButton,
     WhatsHappeningEntryContainer,
     EntryHeader,
     EntryBody,
     EntryFooter,
-    ShowMoreButton,
-    AcknowledgementContainer
-} from "./homepage_components"
-import TweetBox from "../../components/tweet_box"
-import { AiOutlineSearch } from "react-icons/ai"
-import Searchbar from "../../components/search_bar";
+} from "../../components/right_column_components"
 
 export default function Homepage(){
     document.title = "Home / Twitter"
 
     return (
-        <HomepageContainer>
-            <HomepageBodyContainer>
+        <PageContainer>
+            <MiddlePartContainer>
                 <TitleBar>Home</TitleBar>
                 <TweetsContainer>
                     <NewTweetModal  width="100%" />
@@ -38,11 +41,11 @@ export default function Homepage(){
                     <TweetBox />
                     <TweetBox />
                 </TweetsContainer>
-            </HomepageBodyContainer>
-            <RightSidebarContainer>
+            </MiddlePartContainer>
+            <RightPartContainer>
                 <Searchbar />
-                <RightsideContentContainer>
-                    <RightsideContentTitle>What's happening</RightsideContentTitle>
+                <RightColumnContentContainer>
+                    <RightColumnContentTitle>What's happening</RightColumnContentTitle>
                     <WhatsHappeningEntryContainer>
                         <EntryHeader>US News · Last night</EntryHeader>
                         <EntryBody>Evan Rachel Wood and at least four other women make allegations of abuse against Marilyn Manson</EntryBody>
@@ -69,18 +72,17 @@ export default function Homepage(){
                         <EntryFooter>58.9K Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <ShowMoreButton>Show more</ShowMoreButton>
-                </RightsideContentContainer>
-
-                <RightsideContentContainer>
-                    <RightsideContentTitle>Who to follow</RightsideContentTitle>
+                </RightColumnContentContainer>
+                <RightColumnContentContainer>
+                    <RightColumnContentTitle>Who to follow</RightColumnContentTitle>
                     <ShowMoreButton>Show more</ShowMoreButton>
-                </RightsideContentContainer>
+                </RightColumnContentContainer>
                 <AcknowledgementContainer>
                     This is YM Zhang's clone of twitter. 
                     <br/>All rights belong to Twitter, Inc.
                 </AcknowledgementContainer>
-            </RightSidebarContainer>
-        </HomepageContainer>
+            </RightPartContainer>
+        </PageContainer>
     )
 }
 

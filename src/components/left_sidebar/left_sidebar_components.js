@@ -43,7 +43,6 @@ export const NavigationContainer = styled.div`
 `
 
 export const SidebarItemContainer = styled.div`
-    /* width: 60%; */
     border-radius: 50px;
     display: flex;
     flex-direction: row;

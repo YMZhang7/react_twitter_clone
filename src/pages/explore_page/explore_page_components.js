@@ -34,3 +34,37 @@ export const IconContainer = styled.div`
         background-color: rgba(29, 161, 242, 0.1);
     }
 `
+
+export const ContentListContainer = styled.div`
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* background-color: lightcoral; */
+    overflow-y: scroll;
+`
+
+export const ImageNews = styled.div`
+    width: 100%;
+    height: 400px;
+    background: url(${props => props.image});
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10px;
+`
+
+export const ImageTitle = styled.div`
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 5px;
+`
+export const ImageSubtitle = styled.div`
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+`

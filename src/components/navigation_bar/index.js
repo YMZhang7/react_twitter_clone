@@ -35,7 +35,7 @@ const NavigationOption = styled.div`
     align-items: center;
     font-weight: bold;
     color: ${props => props.focus ? "#1DA1F2" : "#5B7083"};
-    border-bottom: ${props => props.focus ? "3px solid #1DA1F2" : ""};
+    border-bottom: ${props => props.focus ? "3px solid #1DA1F2" : "3px solid transparent"};
     cursor: pointer;
     &:hover{
         background-color: rgba(29, 161, 242, 0.1);

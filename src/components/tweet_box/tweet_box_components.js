@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const TweetBoxContainer = styled.div`
     width: 100%;
-    /* height: 450px; */
     border-bottom: 1px solid #E5E5E5;
     display: flex;
     flex-direction: row;
