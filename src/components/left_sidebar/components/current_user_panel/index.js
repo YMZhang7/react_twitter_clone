@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { FiMoreHorizontal } from "react-icons/fi"
 import UserNameText from "../../../user_name_text"
 import UserAtText from "../../../user_at_text"
-import ProfilePicture from "../../../../database/profile_picture.jpg"
+import ProfilePicture from "../../../../images/profile_picture.jpg"
 
 export default function CurrentUserPanel(props){
     return (
@@ -21,15 +21,17 @@ export default function CurrentUserPanel(props){
 const PanelContainer = styled.div`
     height: 60px;
     width: 100%;
-    border-radius: 50px;
+
+    border-radius: 20px;
     position: absolute;
-    bottom: 10px;
+    bottom: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 10px;
+    /* background-color: rgba(29, 161, 242, 0.3); */
     &:hover{
-        background-color: rgba(29, 161, 242, 0.1);
+        background-color: rgba(29, 161, 242, 0.2);
     }
 `
 

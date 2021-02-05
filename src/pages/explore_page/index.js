@@ -13,6 +13,8 @@ import {
     EntryHeader,
     EntryBody,
     EntryFooter,
+    UserRecommendation,
+    // AcknowledgementContainer,
 } from "../../components/right_column_components"
 import {
     TopSearchBarContainer,
@@ -23,10 +25,13 @@ import {
     ImageNews,
     ImageTitle,
     ImageSubtitle,
-
+    WhatsHappeningMoreButton,
 } from "./explore_page_components"
+import { FiMoreHorizontal } from "react-icons/fi"
 import NavigationBar from "../../components/navigation_bar"
 import SnowImage from "../../images/snow_image.jpg"
+import MaleProfile from "../../images/male_profile.jpg"
+import FemaleProfile from "../../images/female_profile.jpg"
 
 export default function ExplorePage(){
     document.title = "Explore / Twitter"
@@ -47,25 +52,30 @@ export default function ExplorePage(){
                         <ImageSubtitle>Trending with Jeff Bezos, Amazon</ImageSubtitle>
                     </ImageNews>
                     <WhatsHappeningEntryContainer>
+                        <WhatsHappeningMoreButton><FiMoreHorizontal /></WhatsHappeningMoreButton>
                         <EntryHeader>Trending in Australia</EntryHeader>
                         <EntryBody>Pete Evans</EntryBody>
                         <EntryFooter>2,546 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
+                        <WhatsHappeningMoreButton><FiMoreHorizontal /></WhatsHappeningMoreButton>
                         <EntryHeader>Trending in Australia</EntryHeader>
                         <EntryBody>Pete Evans</EntryBody>
                         <EntryFooter>2,546 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>Trending in Australia</EntryHeader>
-                        <EntryBody>Pete Evans</EntryBody>
-                        <EntryFooter>2,546 Tweets</EntryFooter>
+                        <WhatsHappeningMoreButton><FiMoreHorizontal /></WhatsHappeningMoreButton>
+                        <EntryHeader>Celebrities · Trending</EntryHeader>
+                        <EntryBody>Princess Diana</EntryBody>
+                        <EntryFooter>4,601 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                 </ContentListContainer>
             </MiddlePartContainer>
             <RightPartContainer>
                 <RightColumnContentContainer>
                     <RightColumnContentTitle>Who to follow</RightColumnContentTitle>
+                    <UserRecommendation image={MaleProfile} name="Harry Potter" username="@Harry Potter" />
+                    <UserRecommendation image={FemaleProfile} name="Hermione Grangerbbbbbbbbbbbbbbbbb" username="@Hermione Granger" />
                     <ShowMoreButton>Show more</ShowMoreButton>
                 </RightColumnContentContainer>
             </RightPartContainer>

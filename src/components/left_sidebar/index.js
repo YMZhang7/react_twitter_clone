@@ -74,9 +74,9 @@ export default function LeftSidebar(){
 
     const SidebarItems = () => sidebarElements.map((item) => 
         <Link to={'/' + item.text.toLowerCase()} style={{ textDecoration: 'none' }} key={item.text}>
-            <SidebarItemContainer onClick={() => handleClick(item.text)} id={item.text}>
+            <SidebarItemContainer onClick={() => handleClick(item.text)} id={item.text} focus={focus === item.text}>
                 <IconContainer focused={focus === item.text}>{focus === item.text ? item.iconFill : item.iconLine}</IconContainer>
-                <TextLabel><span style={{verticalAlign: "10px", color: focus === item.text ? "#1DA1F2" : "#0f1419"}}>{item.text}</span></TextLabel>
+                <TextLabel style={{color: focus === item.text ? "#1DA1F2" : "#0f1419"}}>{item.text}</TextLabel>
             </SidebarItemContainer>
         </Link>
     )

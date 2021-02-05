@@ -9,7 +9,6 @@ import {
     TitleBar,
     Divider,
     TweetsContainer,
-    AcknowledgementContainer
 } from "./homepage_components"
 import TweetBox from "../../components/tweet_box"
 import Searchbar from "../../components/search_bar";
@@ -21,7 +20,11 @@ import {
     EntryHeader,
     EntryBody,
     EntryFooter,
+    AcknowledgementContainer,
+    UserRecommendation,
 } from "../../components/right_column_components"
+import MaleProfile from "../../images/male_profile.jpg"
+import FemaleProfile from "../../images/female_profile.jpg"
 
 export default function Homepage(){
     document.title = "Home / Twitter"
@@ -32,7 +35,7 @@ export default function Homepage(){
                 <TitleBar>Home</TitleBar>
                 <TweetsContainer>
                     <NewTweetModal  width="100%" />
-                    <Divider />
+                    {/* <Divider /> */}
                     <TweetBox />
                     <TweetBox />
                     <TweetBox />
@@ -75,6 +78,8 @@ export default function Homepage(){
                 </RightColumnContentContainer>
                 <RightColumnContentContainer>
                     <RightColumnContentTitle>Who to follow</RightColumnContentTitle>
+                    <UserRecommendation image={MaleProfile} name="Harry Potter" username="@Harry Potter" />
+                    <UserRecommendation image={FemaleProfile} name="Hermione Grangerbbbbbbbbbbbbbbbbb" username="@Hermione Granger" />
                     <ShowMoreButton>Show more</ShowMoreButton>
                 </RightColumnContentContainer>
                 <AcknowledgementContainer>

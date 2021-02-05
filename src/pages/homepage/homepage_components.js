@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const TitleBar = styled.div`
-    height: 50px;
+    width: 100%;
+    height: 7vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,6 +10,12 @@ export const TitleBar = styled.div`
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    position: absolute;
+    background-color: white;
+    top: 0px;
+    /* left: 100px; */
+    z-index: 1;
 `
 
 export const Divider = styled.div`
@@ -18,18 +25,15 @@ export const Divider = styled.div`
 `
 
 export const TweetsContainer = styled.div`
-    height: 100%;
+    /* height: 100%; */
+    box-shadow: 0px -5px 5px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 7vh;
+    height: 93vh;
     flex-direction: column;
     overflow-y: scroll;
-    padding-bottom: 50px;
-`
-
-export const AcknowledgementContainer = styled.div`
-    margin-top: 10px;
-    width: 100%;
-    color: #5B7083;
-    font-size: 13px;
-    text-align: start;
-    line-height: 1.5; 
-    padding: 5px;
+    /* padding-bottom: 50px; */
+    /* position: relative;
+    top: 50px; */
+    
 `

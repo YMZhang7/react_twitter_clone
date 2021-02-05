@@ -13,13 +13,13 @@ const ButtonContainer = styled.button`
     border-radius: 50px;
     border: none;
     outline: none;
-    background-color: #1DA1F2;
+    background: linear-gradient(to bottom right, #4ab4f5 0%, #1da1f2 100%);
     color: white;
     font-weight: bold;
     font-size: 15px;
-    box-shadow: 2px 2px 15px rgba(0,0,0,0.1);
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
     cursor: pointer;
     &:hover{
-        background-color: #0b7bc1;
+        background: #0b7bc1;
     }
 `

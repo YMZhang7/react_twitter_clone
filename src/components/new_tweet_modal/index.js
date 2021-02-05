@@ -13,7 +13,7 @@ import {
     RoundButtonContainer,
 } from "./new_tweet_modal_components"
 import UserPhoto from "../user_photo"
-import ProfilePicture from "../../database/profile_picture.jpg"
+import ProfilePicture from "../../images/profile_picture.jpg"
 import { GiEarthAmerica } from "react-icons/gi"
 import { BiCalendar } from "react-icons/bi"
 import { GrEmoji } from "react-icons/gr"

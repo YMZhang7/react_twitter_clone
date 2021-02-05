@@ -22,6 +22,7 @@ export default function Searchbar(){
 }
 
 const SearchContainer = styled.div`
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
     width: 100%;
     height: 40px;
     background-color: ${props => props.isFocussed ? "white" : "#E5E5E5"};

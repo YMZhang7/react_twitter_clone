@@ -68,3 +68,20 @@ export const ImageSubtitle = styled.div`
     font-size: 15px;
     font-weight: 600;
 `
+
+export const WhatsHappeningMoreButton = styled.div`
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        background-color: rgba(29, 161, 242, 0.1);
+    }
+`

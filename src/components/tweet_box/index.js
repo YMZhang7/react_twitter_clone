@@ -13,7 +13,7 @@ import { BsChat } from "react-icons/bs"
 import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai"
 import { FiShare } from "react-icons/fi"
 import UserPhoto from "../user_photo"
-import ProfilePicture from "../../database/profile_picture.jpg"
+import ProfilePicture from "../../images/profile_picture.jpg"
 import UserNameText from "../user_name_text"
 import UserAtText from "../user_at_text"
 

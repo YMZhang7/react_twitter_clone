@@ -10,7 +10,8 @@ export const TweetBoxContainer = styled.div`
     padding: 15px;
     cursor: pointer;
     &:hover{
-        background: rgba(230, 226, 227, 0.2);
+        background-color: rgba(230, 226, 227, 0.3);
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
     }
 `
 
