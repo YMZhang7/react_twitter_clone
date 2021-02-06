@@ -1,36 +1,91 @@
 import React from "react"
-import NewTweetModal from "../../components/new_tweet_modal"
 import {
-    PageContainer,
     MiddlePartContainer,
-    RightPartContainer
+    PageContainer,
+    RightPartContainer,
 } from "../../components/page_partition"
-import {
-    TitleBar,
-    // Divider,
-    TweetsContainer,
-} from "./homepage_components"
-import TweetBox from "../../components/tweet_box"
+import{
+    Titlebar,
+    NotificationsContainer,
+    NotificationContainer,
+    NotificationLabel,
+    NotificationContent,
+    Photo,
+
+} from "./notification_page_components"
+import SettingsButton from "../../components/settings_button"
+import NavigationBar from "../../components/navigation_bar";
 import Searchbar from "../../components/search_bar";
 import { 
-    RightColumnContentContainer,
-    RightColumnContentTitle,
+    RightColumnContentContainer, 
+    RightColumnContentTitle, 
     ShowMoreButton,
     WhatsHappeningEntryContainer,
     EntryHeader,
     EntryBody,
     EntryFooter,
-    AcknowledgementContainer,
-    UserRecommendation,
-} from "../../components/right_column_components"
+    UserRecommendation
+} from "../../components/right_column_components";
 import MaleProfile from "../../images/male_profile.jpg"
 import FemaleProfile from "../../images/female_profile.jpg"
-import ProfilePicture from "../../images/profile_picture.jpg"
+import TweetBox from "../../components/tweet_box";
+import MoreButton from "../../components/more_button";
 
-export default function Homepage(){
-    document.title = "Home / Twitter"
+export default function NotificationPage(){
+    const [all, setAll] = React.useState(true)
 
-    const tweets = [
+    const handleNavigationClick = (e) => {
+        if (e.target.id === "all")  setAll(true)
+        else    setAll(false)
+    }
+
+    const navigationOptions = [
+        {
+            id: "all",
+            text: "All"
+        },
+        {
+            id: "mentions",
+            text: "Mentions"
+        }
+    ]
+
+    const allNotifications = [
+        {
+            id: 1,
+            photo: MaleProfile,
+            name: "Harry Potter",
+            content: "Hello Muggles!"
+        },
+        {
+            id: 2,
+            photo: FemaleProfile,
+            name: "Hermione Granger",
+            content: "Have you finished your homework?"
+        },
+        {
+            id: 3,
+            photo: MaleProfile,
+            name: "Ronald Weasley",
+            content: "People around here are insane."
+        },
+        {
+            id: 4,
+            photo: MaleProfile,
+            name: "Fred Weasley",
+            content: "Knock Knock!"
+        }
+    ]
+    const allNotificationsComponents = allNotifications.map((e) => 
+        <NotificationContainer>
+            <Photo image={e.photo} />
+            <MoreButton />
+            <NotificationLabel>{"Recent Tweet from " + e.name}</NotificationLabel>
+            <NotificationContent>{e.content}</NotificationContent>
+        </NotificationContainer>
+    )
+
+    const mentions = [
         {
             id: 1,
             timestamp: new Date(2021, 1, 2),
@@ -42,37 +97,24 @@ export default function Homepage(){
             comments: 15, // TODO: change into array later
             retweet: 5,
         },
-        {
-            id: 2,
-            timestamp: new Date(2021, 1, 2),
-            photo: ProfilePicture,
-            name: "Twitter",
-            username: "@Twitter",
-            content: " This is the first ever twitter that is written in this twitter clone. Happy Birthday!",
-            likes: 100,
-            comments: 20, // TODO: change into array later
-            retweet: 30,
-        },
+
     ]
 
-    const tweetsComponents = tweets.map((tweet) => <TweetBox tweet={tweet} />)
+    const mentionsComponents = mentions.map((e) => 
+        <TweetBox key={e.id} tweet={e} />
+    )
 
-    return (
+    return(
         <PageContainer>
             <MiddlePartContainer>
-                <TitleBar>Home</TitleBar>
-                <TweetsContainer>
-                    <NewTweetModal  width="100%" />
-                    {tweetsComponents}
-                    {/* <Divider /> */}
-                    {/* <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox /> */}
-                </TweetsContainer>
+                <Titlebar>
+                    Notification
+                    <SettingsButton />
+                </Titlebar>
+                <NavigationBar options={navigationOptions} handleNavigationClick={handleNavigationClick} />
+                <NotificationsContainer>
+                    {all ? allNotificationsComponents : mentionsComponents}
+                </NotificationsContainer>
             </MiddlePartContainer>
             <RightPartContainer>
                 <Searchbar />
@@ -111,12 +153,7 @@ export default function Homepage(){
                     <UserRecommendation image={FemaleProfile} name="Hermione Granger" username="@Hermione Granger" />
                     <ShowMoreButton>Show more</ShowMoreButton>
                 </RightColumnContentContainer>
-                <AcknowledgementContainer>
-                    This is YM Zhang's clone of twitter. 
-                    <br/>All rights belong to Twitter, Inc.
-                </AcknowledgementContainer>
             </RightPartContainer>
         </PageContainer>
     )
 }
-

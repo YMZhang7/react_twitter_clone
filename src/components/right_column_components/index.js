@@ -1,11 +1,12 @@
 import styled from "styled-components"
 import React from "react"
+// import LongButton from "../long_button"
 
 export const RightColumnContentContainer = styled.div`
     width: 100%;
     height: auto;
     border-radius: 20px;
-    background-color: #EFEFEF;
+    background-color: rgba(242, 242, 242, 0.9);
     margin-top: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
 `
@@ -91,6 +92,7 @@ export function UserRecommendation ({image, name, username}){
                 <UsernameContainer>{username}</UsernameContainer>
             </UserInfoContainer>
             <FollowButton>Follow</FollowButton>
+            {/* <LongButton label="Follow" width="70px" /> */}
         </UserRecommendationContainer>
     )
 }
@@ -142,18 +144,22 @@ const UsernameContainer = styled.div`
 `
 
 const FollowButton = styled.div`
-    width: 80px;
+    width: 70px;
     height: 30px;
     border-radius: 50px;
-    border: 1px solid #1DA1F2;
+    border: 2px solid #1DA1F2;
     color: #1DA1F2;
     font-weight: bold;
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     &:hover{
-        background-color: rgba(29, 161, 242, 0.1);
+        /* background-color: rgba(29, 161, 242, 0.1); */
+        color: white;
+        border: none;
+        background: linear-gradient(to bottom right, #4ab4f5 0%, #1da1f2 100%);
     }
 `

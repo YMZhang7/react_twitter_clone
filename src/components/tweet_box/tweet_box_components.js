@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const TweetBoxContainer = styled.div`
+    position: relative;
     width: 100%;
     border-bottom: 1px solid #E5E5E5;
     display: flex;
@@ -11,7 +12,7 @@ export const TweetBoxContainer = styled.div`
     cursor: pointer;
     &:hover{
         background-color: rgba(230, 226, 227, 0.3);
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        /* box-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
     }
 `
 
@@ -34,6 +35,7 @@ export const BodyContainer = styled.div`
     width: 100%;
     text-align: start;
     font-size: 15px;
+    /* margin-top: 10px; */
 `
 
 export const FooterContainer = styled.div`

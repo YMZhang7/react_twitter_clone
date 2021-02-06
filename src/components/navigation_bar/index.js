@@ -1,29 +1,31 @@
 import React from "react"
 import styled from "styled-components"
 
-export default function NavigationBar(){
-    const [onFocus, setOnFocus] = React.useState("for-you")
+export default function NavigationBar({ options, handleNavigationClick }){
+    
+    const [onFocus, setOnFocus] = React.useState(options[0].id)
     const handleClick = (e) => {
         setOnFocus(e.target.id)
+        handleNavigationClick(e)
     }
 
+    const OptionComponents = options.map((option) => 
+        <NavigationOption key={option.id} id={option.id} onClick={handleClick} focus={onFocus === option.id}>{option.text}</NavigationOption>
+    )
+
     return(
-        <NavigationBarContainer>
-            <NavigationOption id="for-you" onClick={handleClick} focus={onFocus === "for-you"}>For you</NavigationOption>
-            <NavigationOption id="covid-19" onClick={handleClick} focus={onFocus === "covid-19"}>COVID-19</NavigationOption>
-            <NavigationOption id="trending" onClick={handleClick} focus={onFocus === "trending"}>Trending</NavigationOption>
-            <NavigationOption id="news" onClick={handleClick} focus={onFocus === "news"}>News</NavigationOption>
-            <NavigationOption id="sports" onClick={handleClick} focus={onFocus === "sports"}>Sports</NavigationOption>
-            <NavigationOption id="entertainment" onClick={handleClick} focus={onFocus === "entertainment"}>Entertainment</NavigationOption>
+        <NavigationBarContainer count={options.length}>
+            {OptionComponents}
         </NavigationBarContainer>
     )
 }
 
 const NavigationBarContainer = styled.div`
     width: 100%;
-    height: 50px;
+    height: 6vh;
     display: grid;
-    grid-template-columns: 15% 20% 15% 10% 15% 25%;
+    /* grid-template-columns: 15% 20% 15% 10% 15% 25%; */
+    grid-template-columns: repeat(${props => props.count}, auto);
     border-bottom: 1px solid #E5E5E5;
 `
 

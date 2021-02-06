@@ -26,6 +26,7 @@ export const Divider = styled.div`
 
 export const TweetsContainer = styled.div`
     /* height: 100%; */
+    width: 100%;
     box-shadow: 0px -5px 5px rgba(0,0,0,0.1);
     position: absolute;
     top: 7vh;

@@ -12,6 +12,11 @@ import {
   } from "react-router-dom";
 import Homepage from "../../pages/homepage";
 import ExplorePage from "../../pages/explore_page"
+import NotificationPage from "../../pages/notification_page";
+import MessagesPage from "../../pages/ messages_page";
+import BookmarksPage from "../../pages/bookmarks_page";
+import ListsPage from "../../pages/lists_page";
+import ProfilePage from "../../pages/profile_page"
 
 export default function TwitterWebpage(){
     return(
@@ -22,21 +27,15 @@ export default function TwitterWebpage(){
                     <Switch>
                         <Route path="/home" component={Homepage} />
                         <Route path="/explore" component={ExplorePage} />
-                        <Route path="/notifications" component={SomeContent} />
-                        <Route path="/messages" component={SomeContent} />
-                        <Route path="/bookmarks" component={SomeContent} />
-                        <Route path="/lists" component={SomeContent} />
-                        <Route path="/profile" component={SomeContent} />
+                        <Route path="/notifications" component={NotificationPage} />
+                        <Route path="/messages" component={MessagesPage} />
+                        <Route path="/bookmarks" component={BookmarksPage} />
+                        <Route path="/lists" component={ListsPage} />
+                        <Route path="/profile" component={ProfilePage} />
                         <Route path="/"><Redirect to="/home" /></Route>
                     </Switch>
                 </Router>
             </ContentContainer>
         </PageStructureContainer>
-    )
-}
-
-function SomeContent (){
-    return(
-        <h1>Hello</h1>
     )
 }
