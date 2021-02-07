@@ -8,7 +8,7 @@ export const RightColumnContentContainer = styled.div`
     border-radius: 20px;
     background-color: rgba(242, 242, 242, 0.9);
     margin-top: 15px;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+    /* box-shadow: 3px 3px 5px rgba(0,0,0,0.2); */
 `
 
 export const RightColumnContentTitle = styled.div`

@@ -10,11 +10,11 @@ export const TitleBar = styled.div`
     font-size: 20px;
     font-weight: bold;
     padding: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    /* box-shadow: 0px 2px 5px rgba(0,0,0,0.1); */
     position: absolute;
     background-color: white;
     top: 0px;
-    /* left: 100px; */
+    background-color: transparent;
     z-index: 1;
 `
 
@@ -27,11 +27,13 @@ export const Divider = styled.div`
 export const TweetsContainer = styled.div`
     /* height: 100%; */
     width: 100%;
-    box-shadow: 0px -5px 5px rgba(0,0,0,0.1);
+    /* box-shadow: 0px -5px 5px rgba(0,0,0,0.1); */
     position: absolute;
     top: 7vh;
     height: 93vh;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     overflow-y: scroll;
     /* padding-bottom: 50px; */
     /* position: relative;

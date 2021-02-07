@@ -2,17 +2,20 @@ import styled from "styled-components"
 
 export const TweetBoxContainer = styled.div`
     position: relative;
-    width: 100%;
-    border-bottom: 1px solid #E5E5E5;
+    width: 99%;
+    /* border-bottom: 1px solid #E5E5E5; */
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: space-evenly;
     padding: 15px;
     cursor: pointer;
+    background-color: rgba(255,255,255,0.9);
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
     &:hover{
         background-color: rgba(230, 226, 227, 0.3);
-        /* box-shadow: 0px 0px 10px rgba(0,0,0,0.2); */
     }
 `
 

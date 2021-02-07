@@ -22,10 +22,10 @@ import MoreButton from "../more_button"
     * Fix the time
 */
 
-export default function TweetBox({ tweet }){
+export default function TweetBox({ tweet, onClick }){
     let time = Math.round((new Date() - tweet.timestamp) / 1000).toString() + 'h'
     return (
-        <TweetBoxContainer>
+        <TweetBoxContainer onClick={onClick}>
             <MoreButton />
             <UserPhoto photo={tweet.photo} />
             <ContentContainer>

@@ -26,6 +26,7 @@ import {
 import MaleProfile from "../../images/male_profile.jpg"
 import FemaleProfile from "../../images/female_profile.jpg"
 import ProfilePicture from "../../images/profile_picture.jpg"
+import OpenedTweet from "../../components/opened_tweet"
 
 export default function Homepage(){
     document.title = "Home / Twitter"
@@ -55,23 +56,23 @@ export default function Homepage(){
         },
     ]
 
-    const tweetsComponents = tweets.map((tweet) => <TweetBox tweet={tweet} />)
+    const [showTweet, setShowTweet] = React.useState(null)
+    const handleTweetClick = (tweet) => {
+        setShowTweet(tweet)
+    }
+    const closeOpenTweet = () => setShowTweet(null)
+
+    const tweetsComponents = tweets.map((tweet) => <TweetBox key={tweet.id} tweet={tweet} onClick={() => handleTweetClick(tweet)} />)
+
 
     return (
         <PageContainer>
+            <OpenedTweet tweet={showTweet} closeTweet={closeOpenTweet} />
             <MiddlePartContainer>
                 <TitleBar>Home</TitleBar>
                 <TweetsContainer>
-                    <NewTweetModal  width="100%" />
+                    <NewTweetModal  width="99%" />
                     {tweetsComponents}
-                    {/* <Divider /> */}
-                    {/* <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox />
-                    <TweetBox /> */}
                 </TweetsContainer>
             </MiddlePartContainer>
             <RightPartContainer>

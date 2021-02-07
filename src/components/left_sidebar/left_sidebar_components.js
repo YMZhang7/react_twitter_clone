@@ -10,8 +10,9 @@ export const LeftSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: -5px 0px 8px rgba(0,0,0,0.1);
-    background: linear-gradient(to top left,white 0% ,rgba(232, 246, 254, 0.3) 100%);
+    /* box-shadow: -5px 0px 8px rgba(0,0,0,0.1); */
+    background-color: transparent;
+    /* background: linear-gradient(to top left,white 0% ,rgba(232, 246, 254, 0.3) 100%); */
     /* background-color: rgba(232, 246, 254, 0.2); */
 `
 export const TwitterIconContainer = styled.div`
@@ -52,8 +53,7 @@ export const SidebarItemContainer = styled.div`
     flex-direction: row;
     align-items: center;
     height: 45px;
-    /* max-width: 90%; */
-    background-color: ${props => props.focus ? "rgba(29, 161, 242, 0.2)" : "transparent"};
+    background-color: ${props => props.focus ? "rgba(29, 161, 242, 0.3)" : "transparent"};
     padding: 10px;
     margin: 7px;
     color: #0F1419;

@@ -4,16 +4,13 @@ export const ModalContainer = styled.div`
     min-height: ${props => props.height ? "" : "100px"};
     height: ${props => props.height ? props.height : ""};
     width: ${props => props.width};
-    background-color: white; // delete later!
+    background-color: ${props => props.focus ? "white" : "transparent"};
+    border-radius: ${props => props.focus ? "20px" : "0px"};
+    box-shadow: ${props => props.focus ? "2px 2px 5px rgba(0,0,0,0.1)" : "0px"};
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* justify-content: stretch; */
     align-items: stretch;
-    border-top: 1px solid #E5E5E5;
-    border-bottom: 1px solid #E5E5E5;
-    /* padding-top: 10px;
-    padding-bottom: 5px; */
     padding: 15px;
     position: relative;
 `
@@ -70,6 +67,7 @@ export const InputArea = styled.textarea`
     resize: none;
     font-family: apple-system, system-ui, segoe;
     font-size: 20px;
+    background: transparent;
     ::placeholder{
         font-weight: 400;
     }

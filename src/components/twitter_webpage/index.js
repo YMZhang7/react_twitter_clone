@@ -13,7 +13,7 @@ import {
 import Homepage from "../../pages/homepage";
 import ExplorePage from "../../pages/explore_page"
 import NotificationPage from "../../pages/notification_page";
-import MessagesPage from "../../pages/ messages_page";
+import MessagesPage from "../../pages/messages_page";
 import BookmarksPage from "../../pages/bookmarks_page";
 import ListsPage from "../../pages/lists_page";
 import ProfilePage from "../../pages/profile_page"

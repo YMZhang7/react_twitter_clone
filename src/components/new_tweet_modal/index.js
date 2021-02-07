@@ -25,16 +25,17 @@ import LongButton from "../long_button"
 export default function NewTweetModal({height, width}){
     const [isFocus, setIsFocus] = React.useState(false)
     const handleFocus = () => setIsFocus(true)
+    const handleBlur = () => setIsFocus(false)
 
     return(
-        <ModalContainer height={height} width={width}>
+        <ModalContainer height={height} width={width} focus={isFocus}>
             <UserPhoto photo={ProfilePicture} />
             {/* <UserPhoto>
                 <Photo image={ProfilePicture} />
             </UserPhoto> */}
             <TweetEdittingContainer focus={isFocus}>
                 <TopContainer focus={isFocus}>
-                    <InputArea placeholder="What's happening?" onFocus={handleFocus} />
+                    <InputArea placeholder="What's happening?" onFocus={handleFocus} onBlur={handleBlur} />
                     <AccessibilitySettingContainer focus={isFocus}>
                         <AccessibilitySettings>
                             <GiEarthAmerica />

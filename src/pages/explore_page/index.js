@@ -74,7 +74,6 @@ export default function ExplorePage(){
                 <TopbarContainer>
                     <TopSearchBarContainer>
                         <Searchbar />
-                        {/* <IconContainer><SettingsIcon /></IconContainer> */}
                         <SettingsButton />
                     </TopSearchBarContainer>
                     <NavigationBar options={navigationOptions} handleNavigationClick={handleNavigationClick} />

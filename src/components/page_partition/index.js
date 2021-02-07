@@ -14,8 +14,9 @@ export const MiddlePartContainer = styled.div`
     position: relative;
     width: 65%;
     height: 100%;
-    border-left: 1px solid #E5E5E5;
-    border-right: 1px solid #E5E5E5;
+    /* padding: 5px; */
+    /* border-left: 2px solid white;
+    border-right: 2px solid white; */
 `
 
 export const RightPartContainer = styled.div`
