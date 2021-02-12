@@ -49,7 +49,7 @@ export default function Homepage(){
             photo: ProfilePicture,
             name: "Twitter",
             username: "@Twitter",
-            content: " This is the first ever twitter that is written in this twitter clone. Happy Birthday!",
+            content: "This is the first ever tweet written on my twitter clone. Happy Birthday!",
             likes: 100,
             comments: 20, // TODO: change into array later
             retweet: 30,
