@@ -16,6 +16,7 @@ import { BsBell, BsBellFill, BsPerson, BsFillPersonFill } from "react-icons/bs"
 import { CgMoreO } from "react-icons/cg"
 import LongButton from "../long_button"
 import CurrentUserPanel from "./components/current_user_panel"
+import PopupList from "../popup_list";
 
 
 // [] wrap the components with <a></a>
@@ -67,9 +68,18 @@ const sidebarElements = [
 
 export default function LeftSidebar(){
     const [focus, setFocus] = React.useState('Home')
+    const [popupShow, setPopupShow] = React.useState(false)
+
+    const handlePopupShow = () => setPopupShow(true)
+    const handlePopupClose = () => setPopupShow(false)
 
     function handleClick (text){
-        setFocus(text)
+        if (text == "More"){
+            // handlePopupShow()
+            console.log(window.innerWidth)
+        } else {
+            setFocus(text)
+        }
     }
 
     const SidebarItems = () => sidebarElements.map((item) => 
@@ -81,8 +91,11 @@ export default function LeftSidebar(){
         </Link>
     )
 
+    
+
     return (
         <LeftSidebarContainer>
+            <PopupList show={popupShow} handleClose={handlePopupClose}  />
             <TwitterIconContainer>
                 <TwitterIcon>
                     <RiTwitterFill />
@@ -92,7 +105,7 @@ export default function LeftSidebar(){
                 {SidebarItems()}
                 <SidebarItemContainer onClick={() => handleClick("More")}>
                     <IconContainer focused={focus === "More"}><CgMoreO /></IconContainer>
-                    <TextLabel><span style={{verticalAlign: "10px", color: focus === "More" ? "#1DA1F2" : "#0f1419"}}>More</span></TextLabel>
+                    <TextLabel onClick={handlePopupShow}><span style={{verticalAlign: "10px", color: focus === "More" ? "#1DA1F2" : "#0f1419"}}>More</span></TextLabel>
                 </SidebarItemContainer>
             </NavigationContainer>
             <LongButton width="90%" label="Tweet" />

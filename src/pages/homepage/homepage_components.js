@@ -15,7 +15,7 @@ export const TitleBar = styled.div`
     background-color: white;
     top: 0px;
     background-color: transparent;
-    z-index: 1;
+    /* z-index: 1; */
 `
 
 export const Divider = styled.div`

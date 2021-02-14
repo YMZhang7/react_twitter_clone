@@ -17,7 +17,8 @@ export const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
     height: 100vh;
-    width: 85%;
+    min-width: 1250px;
+    /* max-width: 95%; */
     position: relative;
     background-color: transparent;
     box-shadow: 2px 0px 10px rgba(0,0,0,0.4);

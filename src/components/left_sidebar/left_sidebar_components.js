@@ -1,8 +1,6 @@
 import styled from "styled-components"
 
 export const LeftSidebarContainer = styled.div`
-    /* border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px; */
     position: fixed;
     top: 0px;
     width: 250px;
@@ -10,10 +8,8 @@ export const LeftSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* box-shadow: -5px 0px 8px rgba(0,0,0,0.1); */
     background-color: transparent;
-    /* background: linear-gradient(to top left,white 0% ,rgba(232, 246, 254, 0.3) 100%); */
-    /* background-color: rgba(232, 246, 254, 0.2); */
+    z-index: 1;
 `
 export const TwitterIconContainer = styled.div`
     width: 95%;
@@ -57,6 +53,7 @@ export const SidebarItemContainer = styled.div`
     padding: 10px;
     margin: 7px;
     color: #0F1419;
+    cursor: pointer;
     &:hover{
         background-color: rgba(29, 161, 242, 0.1);
     }

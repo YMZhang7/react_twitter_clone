@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const PageContainer = styled.div`
-    width: 80%;
+    /* width: 80%; */
+    width: auto;
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -12,15 +13,14 @@ export const PageContainer = styled.div`
 
 export const MiddlePartContainer = styled.div`
     position: relative;
-    width: 65%;
+    /* width: 65%; */
+    width: 650px;
     height: 100%;
-    /* padding: 5px; */
-    /* border-left: 2px solid white;
-    border-right: 2px solid white; */
 `
 
 export const RightPartContainer = styled.div`
-    width: 35%;
+    /* width: 35%; */
+    width: 350px;
     height: 100%;
     padding: 5px 20px 5px 20px;
     overflow-y: scroll;
