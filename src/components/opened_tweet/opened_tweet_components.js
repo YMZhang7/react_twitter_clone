@@ -15,6 +15,7 @@ export const BackgroundScreen = styled.div`
 `
 
 export const TweetWindow = styled.div`
+    position: relative;
     width: 40%;
     max-height: 90%;
     padding: 20px;
@@ -111,4 +112,22 @@ export const TweetCommentsContainer = styled.div`
     width: 100%;
     height: 300px;
     overflow-y: scroll;
+`
+
+export const CloseButtonContainer = styled.div`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover{
+        background-color: rgba(29, 161, 242, 0.1);
+    }
 `

@@ -11,11 +11,11 @@ import {
     TweetActionsBar,
     IconContainer,
     TweetCommentsContainer,
-
+    CloseButtonContainer,
 } from "./opened_tweet_components"
 import { FiMoreHorizontal } from "react-icons/fi"
 import { BsChat } from "react-icons/bs"
-import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai"
+import { AiOutlineRetweet, AiOutlineHeart, AiOutlineClose } from "react-icons/ai"
 import { FiShare } from "react-icons/fi"
 import TweetBox from "../tweet_box"
 
@@ -35,6 +35,7 @@ export default function OpenedTweet({tweet, closeTweet}){
     return(
         <BackgroundScreen show={tweet} onClick={closeOpenTweet}>
             <TweetWindow onClick={TweetWindowClicked}>
+                <CloseButtonContainer onClick={closeOpenTweet}><AiOutlineClose /></CloseButtonContainer>
                 <TweetTopBar>Harry Potter liked</TweetTopBar>
                 <TweetSenderContainer>
                     <UserCard name={tweet && tweet.name} username={tweet && tweet.username} photo={tweet && tweet.photo} />
@@ -54,6 +55,7 @@ export default function OpenedTweet({tweet, closeTweet}){
                     <IconContainer hoverColor="#1DA1F2"><FiShare /></IconContainer>
                 </TweetActionsBar>
                 <TweetCommentsContainer>
+                    {tweet && (tweet.comments.length === 0) && <div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>}
                     {tweet && (tweet.comments.length > 0 && <TweetBox tweet={tweet.comments[0]} />)}
                 </TweetCommentsContainer>
             </TweetWindow>
