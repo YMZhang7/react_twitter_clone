@@ -1,20 +1,13 @@
 import styled from "styled-components"
 
 export const PageContainer = styled.div`
-    /* width: 80%; */
     width: auto;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* position: absolute;
-    left: 250px; */
     position: relative;
     background-color: transparent;
-    /* background-color: red; */
-    /* @media screen and (max-width: 1250px){
-        left: 80px;
-    } */
 `
 
 export const MiddlePartContainer = styled.div`
@@ -25,9 +18,11 @@ export const MiddlePartContainer = styled.div`
 `
 
 export const RightPartContainer = styled.div`
-    /* width: 35%; */
     width: 350px;
     height: 100%;
     padding: 5px 20px 5px 20px;
     overflow-y: scroll;
+    @media screen and (max-width: 1080px){
+        display: none;
+    }
 `
