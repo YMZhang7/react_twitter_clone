@@ -18,7 +18,7 @@ export const TopSearchBarContainer = styled.div`
 
 
 export const ContentListContainer = styled.div`
-    height: 90%;
+    height: 80%;
     width: 100%;
     display: flex;
     flex-direction: column;
