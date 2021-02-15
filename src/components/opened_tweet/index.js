@@ -10,11 +10,14 @@ import {
     TweetStatisticsContainer,
     TweetActionsBar,
     IconContainer,
+    TweetCommentsContainer,
+
 } from "./opened_tweet_components"
 import { FiMoreHorizontal } from "react-icons/fi"
 import { BsChat } from "react-icons/bs"
 import { AiOutlineRetweet, AiOutlineHeart } from "react-icons/ai"
 import { FiShare } from "react-icons/fi"
+import TweetBox from "../tweet_box"
 
 export default function OpenedTweet({tweet, closeTweet}){
     const closeOpenTweet = () => {
@@ -27,6 +30,8 @@ export default function OpenedTweet({tweet, closeTweet}){
         e.stopPropagation() // avoid closeOpenTweet being called
     }
 
+    let time = tweet && tweet.timestamp.getFullYear() + '/' + (parseInt(tweet.timestamp.getMonth()) + 1).toString() + '/' + tweet.timestamp.getDate()
+
     return(
         <BackgroundScreen show={tweet} onClick={closeOpenTweet}>
             <TweetWindow onClick={TweetWindowClicked}>
@@ -36,7 +41,7 @@ export default function OpenedTweet({tweet, closeTweet}){
                     <FiMoreHorizontal />
                 </TweetSenderContainer>
                 <TweetBodyContainer>{tweet && tweet.content}</TweetBodyContainer>
-                <TweetInfoContainer>5:02 am · 7 Feb 2021·Twitter for iPhone</TweetInfoContainer>
+                <TweetInfoContainer>{time + " · Twitter for iPhone"}</TweetInfoContainer>
                 <TweetStatisticsContainer>
                     {tweet && tweet.retweet}&nbsp;<TweetInfoContainer>Retweet</TweetInfoContainer> 
                     1&nbsp;<TweetInfoContainer>Quote Tweet</TweetInfoContainer>
@@ -48,6 +53,9 @@ export default function OpenedTweet({tweet, closeTweet}){
                     <IconContainer hoverColor="#E13E70"><AiOutlineHeart /></IconContainer>
                     <IconContainer hoverColor="#1DA1F2"><FiShare /></IconContainer>
                 </TweetActionsBar>
+                <TweetCommentsContainer>
+                    {tweet && (tweet.comments.length > 0 && <TweetBox tweet={tweet.comments[0]} />)}
+                </TweetCommentsContainer>
             </TweetWindow>
         </BackgroundScreen>
     )

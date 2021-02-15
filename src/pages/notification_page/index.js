@@ -32,6 +32,7 @@ import TweetBox from "../../components/tweet_box";
 import MoreButton from "../../components/more_button";
 
 export default function NotificationPage(){
+    document.title = 'Notifications / Twitter'
     const [all, setAll] = React.useState(true)
 
     const handleNavigationClick = (e) => {
@@ -77,7 +78,7 @@ export default function NotificationPage(){
         }
     ]
     const allNotificationsComponents = allNotifications.map((e) => 
-        <NotificationContainer>
+        <NotificationContainer key={e.content}>
             <Photo image={e.photo} />
             <MoreButton />
             <NotificationLabel>{"Recent Tweet from " + e.name}</NotificationLabel>
@@ -86,6 +87,17 @@ export default function NotificationPage(){
     )
 
     const mentions = [
+        // {
+        //     id: 1,
+        //     timestamp: new Date(2021, 1, 2),
+        //     photo: FemaleProfile,
+        //     name: "Hermione Granger",
+        //     username: "@Hemione Granger",
+        //     content: "Congratulations on finishing your homework! @Twitter",
+        //     likes: 10,
+        //     comments: 15, // TODO: change into array later
+        //     retweet: 5,
+        // },
         {
             id: 1,
             timestamp: new Date(2021, 1, 2),
@@ -94,10 +106,20 @@ export default function NotificationPage(){
             username: "@Hemione Granger",
             content: "Congratulations on finishing your homework! @Twitter",
             likes: 10,
-            comments: 15, // TODO: change into array later
+            comments: [
+                {
+                    timestamp: new Date(2021, 1, 2),
+                    photo: MaleProfile,
+                    name: "Ron Weasley",
+                    username: "@Ron Weasley",
+                    content: "Give me a break...",
+                    likes: 5,
+                    comments: [],
+                    retweet: 0,
+                }
+            ], // TODO: change into array later
             retweet: 5,
         },
-
     ]
 
     const mentionsComponents = mentions.map((e) => 
@@ -121,28 +143,28 @@ export default function NotificationPage(){
                 <RightColumnContentContainer>
                     <RightColumnContentTitle>What's happening</RightColumnContentTitle>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>US News · Last night</EntryHeader>
-                        <EntryBody>Evan Rachel Wood and at least four other women make allegations of abuse against Marilyn Manson</EntryBody>
-                        <EntryFooter>2,527 Tweets</EntryFooter>
+                        <EntryHeader>Trending at Hogwarts</EntryHeader>
+                        <EntryBody>Albus Dumbledore has been reinstated as the headmaster of Hogwarts School of Witchcraft and Wizardry</EntryBody>
+                        <EntryFooter>10,527 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>Trending in Australia</EntryHeader>
-                        <EntryBody>Pete Evans</EntryBody>
+                        <EntryHeader>Trending at Hogwarts</EntryHeader>
+                        <EntryBody>Harry Potter</EntryBody>
                         <EntryFooter>2,546 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
                         <EntryHeader>News · Trending</EntryHeader>
-                        <EntryBody>Marjorie Taylor Greene</EntryBody>
+                        <EntryBody>You Know Who</EntryBody>
                         <EntryFooter>261K Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
                         <EntryHeader>Politics · Trending</EntryHeader>
-                        <EntryBody>hunter biden</EntryBody>
-                        <EntryFooter>24.8K Tweets</EntryFooter>
+                        <EntryBody>Cornelius Fudge</EntryBody>
+                        <EntryFooter>14,601 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>Politics · Trending</EntryHeader>
-                        <EntryBody>Mitch McConnell</EntryBody>
+                        <EntryHeader>News · Trending</EntryHeader>
+                        <EntryBody>Ministry of Magic</EntryBody>
                         <EntryFooter>58.9K Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <ShowMoreButton>Show more</ShowMoreButton>

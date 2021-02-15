@@ -33,6 +33,8 @@ import NavigationBar from "../../components/navigation_bar"
 import TweetBox from "../../components/tweet_box"
 
 export default function ProfilePage(){
+    document.title = '@Twitter / Twitter'
+
     const navigationOptions = [
         {
             id: "tweets",
@@ -58,14 +60,14 @@ export default function ProfilePage(){
 
     const yourTweets = [
         {
-            id: 1,
+            id: 2,
             timestamp: new Date(2021, 1, 2),
             photo: ProfilePicture,
             name: "Twitter",
             username: "@Twitter",
             content: "This is the first ever tweet written on my twitter clone. Happy Birthday!",
             likes: 100,
-            comments: 20, // TODO: change into array later
+            comments: [], // TODO: change into array later
             retweet: 30,
         },
     ]
@@ -107,28 +109,28 @@ export default function ProfilePage(){
                 <RightColumnContentContainer>
                     <RightColumnContentTitle>What's happening</RightColumnContentTitle>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>US News · Last night</EntryHeader>
-                        <EntryBody>Evan Rachel Wood and at least four other women make allegations of abuse against Marilyn Manson</EntryBody>
-                        <EntryFooter>2,527 Tweets</EntryFooter>
+                        <EntryHeader>Trending at Hogwarts</EntryHeader>
+                        <EntryBody>Albus Dumbledore has been reinstated as the headmaster of Hogwarts School of Witchcraft and Wizardry</EntryBody>
+                        <EntryFooter>10,527 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>Trending in Australia</EntryHeader>
-                        <EntryBody>Pete Evans</EntryBody>
+                        <EntryHeader>Trending at Hogwarts</EntryHeader>
+                        <EntryBody>Harry Potter</EntryBody>
                         <EntryFooter>2,546 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
                         <EntryHeader>News · Trending</EntryHeader>
-                        <EntryBody>Marjorie Taylor Greene</EntryBody>
+                        <EntryBody>You Know Who</EntryBody>
                         <EntryFooter>261K Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
                         <EntryHeader>Politics · Trending</EntryHeader>
-                        <EntryBody>hunter biden</EntryBody>
-                        <EntryFooter>24.8K Tweets</EntryFooter>
+                        <EntryBody>Cornelius Fudge</EntryBody>
+                        <EntryFooter>14,601 Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <WhatsHappeningEntryContainer>
-                        <EntryHeader>Politics · Trending</EntryHeader>
-                        <EntryBody>Mitch McConnell</EntryBody>
+                        <EntryHeader>News · Trending</EntryHeader>
+                        <EntryBody>Ministry of Magic</EntryBody>
                         <EntryFooter>58.9K Tweets</EntryFooter>
                     </WhatsHappeningEntryContainer>
                     <ShowMoreButton>Show more</ShowMoreButton>

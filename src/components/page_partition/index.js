@@ -7,8 +7,14 @@ export const PageContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    position: absolute;
-    left: 250px;
+    /* position: absolute;
+    left: 250px; */
+    position: relative;
+    background-color: transparent;
+    /* background-color: red; */
+    /* @media screen and (max-width: 1250px){
+        left: 80px;
+    } */
 `
 
 export const MiddlePartContainer = styled.div`

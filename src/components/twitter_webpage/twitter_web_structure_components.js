@@ -6,7 +6,7 @@ export const PageStructureContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    position: relative;
+    position: fixed;
     background: linear-gradient(to bottom right, rgba(198, 230, 255, 0.3) 40%, white 60%, rgba(158, 211, 226, 0.3));
     overflow: hidden;
     /* background-color: red; */
@@ -16,6 +16,7 @@ export const PageStructureContainer = styled.div`
 export const ContentContainer = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 100vh;
     min-width: 1250px;
     /* max-width: 95%; */

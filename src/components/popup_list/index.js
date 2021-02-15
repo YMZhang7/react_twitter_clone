@@ -47,7 +47,7 @@ const listItems = [
     }
 ]
 
-export default function PopupList({ show, handleClose}){
+export default function PopupList({ show, handleClose, left, bottom}){
 
     const handleClick = (e) => {
         console.log('more clicked')
@@ -60,10 +60,10 @@ export default function PopupList({ show, handleClose}){
             &nbsp;&nbsp;&nbsp;{item.text}
         </PopupListItem>
     )
-
+    const height = window.innerHeight - bottom > 500 ? 500 : (window.innerHeight - bottom)
     return (
-        <BackgroundContainer show={show} onClick={handleClose} >
-            <PopupContainer>
+        <BackgroundContainer show={show} onClick={handleClose}>
+            <PopupContainer left={left} bottom={bottom} height={height}>
                 {ListItems}
             </PopupContainer>
         </BackgroundContainer>
@@ -84,16 +84,16 @@ const BackgroundContainer = styled.div`
 const PopupContainer = styled.div`
     display: flex;
     flex-direction: column;
-
     position: absolute;
-    /* top: 320px; */
-    bottom: 280px;
-    left: 110px;
+    bottom: ${props => props.bottom + "px"};
+    left: ${props => props.left + "px"};
     width: 230px;
-    height: auto; // TODO: change to auto
+    /* height: 500px; */
+    height: ${props => props.height + "px"};
     background-color: white;
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    overflow-y: scroll;
 `
 
 const PopupListItem = styled.div`

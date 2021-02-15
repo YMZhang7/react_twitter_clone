@@ -2,9 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { FiMoreHorizontal } from "react-icons/fi"
 
-export default function MoreButton(){
+export default function MoreButton({onClick}){
     return(
-        <ButtonContainer>
+        <ButtonContainer onClick={onClick}>
             <FiMoreHorizontal />
         </ButtonContainer>
     )

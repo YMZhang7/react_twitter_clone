@@ -101,9 +101,14 @@ export const IconContainer = styled.div`
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     cursor: pointer;
     font-size: 20px;
-    margin-left: 30px;
+    margin-right: 30px;
     &:hover{
-        /* background-color: rgba(29, 161, 242, 0.2); */
         background-color: ${props => props.hoverColor};
     }
+`
+
+export const TweetCommentsContainer = styled.div`
+    width: 100%;
+    height: 300px;
+    overflow-y: scroll;
 `

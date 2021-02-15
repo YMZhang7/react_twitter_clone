@@ -44,6 +44,7 @@ export const ImageTitle = styled.div`
     font-weight: bold;
     font-size: 25px;
     margin: 5px;
+    text-align: start;
 `
 export const ImageSubtitle = styled.div`
     color: white;

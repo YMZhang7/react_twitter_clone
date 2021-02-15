@@ -34,6 +34,7 @@ import { GrEmoji } from "react-icons/gr"
 
 
 export default function MessagesPage(){
+    document.title = 'Messages / Twitter'
     const contacts = [
         {
             id: 1,

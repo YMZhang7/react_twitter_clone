@@ -14,7 +14,6 @@ import {
     EntryBody,
     EntryFooter,
     UserRecommendation,
-    // AcknowledgementContainer,
 } from "../../components/right_column_components"
 import {
     TopSearchBarContainer,
@@ -27,9 +26,12 @@ import {
     ImageSubtitle,
     // WhatsHappeningMoreButton,
 } from "./explore_page_components"
-// import { FiMoreHorizontal } from "react-icons/fi"
 import NavigationBar from "../../components/navigation_bar"
-import SnowImage from "../../images/snow_image.jpg"
+import HogwartsImage from "../../images/hogwarts_image.jpg"
+import MinistryOfMagic from "../../images/ministry_of_magic.jpeg"
+import Prophet from "../../images/prophet.jpg"
+import Quidditch from "../../images/quidditch.jpg"
+import CelestinaWarbeck from "../../images/celestina_warbeck.png"
 import MaleProfile from "../../images/male_profile.jpg"
 import FemaleProfile from "../../images/female_profile.jpg"
 import SettingsButton from "../../components/settings_button"
@@ -43,8 +45,8 @@ export default function ExplorePage(){
             text: "For you"
         },
         {
-            id: "covid-19",
-            text: "COVID-19"
+            id: "politics",
+            text: "Politics"
         },
         {
             id: "trending",
@@ -64,8 +66,174 @@ export default function ExplorePage(){
         },
     ]
 
+    const [currentSection, setCurrentSection] = React.useState("for-you")
+
     const handleNavigationClick = (e) => {
-        console.log(e.target.id)
+        // console.log(e.target.id)
+        setCurrentSection(e.target.id)
+    }
+
+    const presentContent = () => {
+        switch(currentSection){
+            case 'for-you':
+                return (
+                    <ContentListContainer>
+                        <ImageNews image={HogwartsImage}>
+                            <ImageSubtitle>Hogwarts news · This morning</ImageSubtitle>
+                            <ImageTitle>Albus Dumbledore has been reinstated as the headmaster of Hogwarts School of Witchcraft and Wizardry</ImageTitle>
+                            <ImageSubtitle>Trending with Albus Dumbledore, Hogwarts</ImageSubtitle>
+                        </ImageNews>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending at Hogwarts</EntryHeader>
+                            <EntryBody>Harry Potter</EntryBody>
+                            <EntryFooter>2,546 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending at Hogwarts</EntryHeader>
+                            <EntryBody>Umbridge</EntryBody>
+                            <EntryFooter>3,240 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Politics · Trending</EntryHeader>
+                            <EntryBody>Cornelius Fudge</EntryBody>
+                            <EntryFooter>14,601 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                    </ContentListContainer>
+                )
+            case 'politics':
+                return (
+                    <ContentListContainer>
+                        <ImageNews image={MinistryOfMagic}>
+                            <ImageSubtitle>News · This morning</ImageSubtitle>
+                            <ImageTitle>Cornelius Fudge facing inquiries</ImageTitle>
+                            <ImageSubtitle>Trending this morning</ImageSubtitle>
+                        </ImageNews>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>News · Ministry of magic</EntryHeader>
+                            <EntryBody>Department of Mysteries</EntryBody>
+                            {/* <EntryFooter>2,546 Tweets</EntryFooter> */}
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Politics · Trending</EntryHeader>
+                            <EntryBody>Umbridge</EntryBody>
+                            <EntryFooter>3,240 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Politics · Trending</EntryHeader>
+                            <EntryBody>Cornelius Fudge</EntryBody>
+                            <EntryFooter>14,601 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                    </ContentListContainer>
+                )
+            case 'trending':
+                return (
+                    <ContentListContainer>
+                        <ImageNews image={Prophet}>
+                            <ImageSubtitle>Trending · This morning</ImageSubtitle>
+                            <ImageTitle>Prophecy of the future?</ImageTitle>
+                            <ImageSubtitle>Trending this morning</ImageSubtitle>
+                        </ImageNews>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending</EntryHeader>
+                            <EntryBody>Harry Potter: the Chosen One?</EntryBody>
+                            <EntryFooter>10,546 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending</EntryHeader>
+                            <EntryBody>You Know Who Returned!</EntryBody>
+                            <EntryFooter>3,240 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending</EntryHeader>
+                            <EntryBody>Cornelius Fudge: incompetent for the job?</EntryBody>
+                            <EntryFooter>44,601 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                    </ContentListContainer>
+                ) 
+            case 'news': 
+                return (
+                    <ContentListContainer>
+                        <ImageNews image={MinistryOfMagic}>
+                            <ImageSubtitle>Headline · This morning</ImageSubtitle>
+                            <ImageTitle>You know who broke into the Ministry of Magic last night</ImageTitle>
+                            <ImageSubtitle>Trending this morning</ImageSubtitle>
+                        </ImageNews>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Headline</EntryHeader>
+                            <EntryBody>12 Death Eaters got arrested this morning</EntryBody>
+                            {/* <EntryFooter>10,546 Tweets</EntryFooter> */}
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>News</EntryHeader>
+                            <EntryBody>Cornelius Fudge facing inquiries at the ministry</EntryBody>
+                            {/* <EntryFooter>3,240 Tweets</EntryFooter> */}
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>News</EntryHeader>
+                            <EntryBody>Albus Dumbledore has been reinstated as the headmaster of Hogwarts School of Witchcraft and Wizardry</EntryBody>
+                            {/* <EntryFooter>44,601 Tweets</EntryFooter> */}
+                        </WhatsHappeningEntryContainer>
+                    </ContentListContainer>
+                )
+            case 'sports':
+                return (
+                    <ContentListContainer>
+                        <ImageNews image={Quidditch}>
+                            <ImageSubtitle>Headline · This morning</ImageSubtitle>
+                            <ImageTitle>Quidditch World Cup will be held in England in 2000</ImageTitle>
+                            <ImageSubtitle>Trending this morning</ImageSubtitle>
+                        </ImageNews>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Quidditch Meet</EntryHeader>
+                            <EntryBody>England Vs France</EntryBody>
+                            <EntryFooter>10,546 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Quidditch Meet</EntryHeader>
+                            <EntryBody>England Vs Japan</EntryBody>
+                            <EntryFooter>13,240 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                    </ContentListContainer>
+                )
+            case 'entertainment':
+                return (
+                    <ContentListContainer>
+                        <ImageNews image={CelestinaWarbeck}>
+                            <ImageSubtitle>Concert Coming Up</ImageSubtitle>
+                            <ImageTitle>Celestina Warbeck in Concert</ImageTitle>
+                            <ImageSubtitle>Trending</ImageSubtitle>
+                        </ImageNews>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending</EntryHeader>
+                            <EntryBody>Only 100 tickets left for Celestina Warbeck in Concert!</EntryBody>
+                            <EntryFooter>40,546 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                        <WhatsHappeningEntryContainer>
+                            <MoreButton />
+                            <EntryHeader>Trending</EntryHeader>
+                            <EntryBody>You Charmed the Heart Right Out of Me</EntryBody>
+                            <EntryFooter>13,240 Tweets</EntryFooter>
+                        </WhatsHappeningEntryContainer>
+                    </ContentListContainer>
+                )
+            default: 
+                return null
+        }
     }
 
     return(
@@ -77,35 +245,8 @@ export default function ExplorePage(){
                         <SettingsButton />
                     </TopSearchBarContainer>
                     <NavigationBar options={navigationOptions} handleNavigationClick={handleNavigationClick} />
-                </TopbarContainer>
-                <ContentListContainer>
-                    <ImageNews image={SnowImage}>
-                        <ImageSubtitle>US news · This morning</ImageSubtitle>
-                        <ImageTitle>Jeff Bezos to step down as Amazon CEO</ImageTitle>
-                        <ImageSubtitle>Trending with Jeff Bezos, Amazon</ImageSubtitle>
-                    </ImageNews>
-                    <WhatsHappeningEntryContainer>
-                        {/* <WhatsHappeningMoreButton><FiMoreHorizontal /></WhatsHappeningMoreButton> */}
-                        <MoreButton />
-                        <EntryHeader>Trending in Australia</EntryHeader>
-                        <EntryBody>Pete Evans</EntryBody>
-                        <EntryFooter>2,546 Tweets</EntryFooter>
-                    </WhatsHappeningEntryContainer>
-                    <WhatsHappeningEntryContainer>
-                        {/* <WhatsHappeningMoreButton><FiMoreHorizontal /></WhatsHappeningMoreButton> */}
-                        <MoreButton />
-                        <EntryHeader>Trending in Australia</EntryHeader>
-                        <EntryBody>Pete Evans</EntryBody>
-                        <EntryFooter>2,546 Tweets</EntryFooter>
-                    </WhatsHappeningEntryContainer>
-                    <WhatsHappeningEntryContainer>
-                        {/* <WhatsHappeningMoreButton><FiMoreHorizontal /></WhatsHappeningMoreButton> */}
-                        <MoreButton />
-                        <EntryHeader>Celebrities · Trending</EntryHeader>
-                        <EntryBody>Princess Diana</EntryBody>
-                        <EntryFooter>4,601 Tweets</EntryFooter>
-                    </WhatsHappeningEntryContainer>
-                </ContentListContainer>
+                </TopbarContainer>  
+                {presentContent()}                    
             </MiddlePartContainer>
             <RightPartContainer>
                 <RightColumnContentContainer>
