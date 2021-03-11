@@ -19,7 +19,8 @@ import MoreButton from "../more_button"
 
 
 export default function TweetBox({ tweet, onClick }){
-    let time = tweet.timestamp.getFullYear() + '/' + (parseInt(tweet.timestamp.getMonth()) + 1).toString() + '/' + tweet.timestamp.getDate()
+    let tweetTime = new Date(tweet.time)
+    let time = tweetTime.getFullYear() + '/' + (parseInt(tweetTime.getMonth()) + 1).toString() + '/' + tweetTime.getDate()
 
     function preventClick(e){
         console.log('child clicked')

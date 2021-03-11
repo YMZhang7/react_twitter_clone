@@ -25,7 +25,6 @@ import {
 } from "./messages_page_components"
 import FemaleProfile from "../../images/female_profile.jpg"
 import MaleProfile from "../../images/male_profile.jpg"
-// import { GrUserManager } from "react-icons/gr"
 import UserAtText from "../../components/user_at_text"
 import { AiOutlineInfoCircle, AiOutlineSend } from "react-icons/ai"
 import { IoImageOutline } from "react-icons/io5"

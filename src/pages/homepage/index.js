@@ -31,41 +31,62 @@ import OpenedTweet from "../../components/opened_tweet"
 export default function Homepage(){
     document.title = "Home / Twitter"
 
-    const tweets = [
-        {
-            id: 1,
-            timestamp: new Date(2021, 1, 2),
-            photo: FemaleProfile,
-            name: "Hermione Granger",
-            username: "@Hemione Granger",
-            content: "Congratulations on finishing your homework! @Twitter",
-            likes: 10,
-            comments: [
-                {
-                    timestamp: new Date(2021, 1, 2),
-                    photo: MaleProfile,
-                    name: "Ron Weasley",
-                    username: "@Ron Weasley",
-                    content: "Give me a break...",
-                    likes: 5,
-                    comments: [],
-                    retweet: 0,
-                }
-            ], // TODO: change into array later
-            retweet: 5,
-        },
-        {
-            id: 2,
-            timestamp: new Date(2021, 1, 2),
-            photo: ProfilePicture,
-            name: "Twitter",
-            username: "@Twitter",
-            content: "This is the first ever tweet written on my twitter clone. Happy Birthday!",
-            likes: 100,
-            comments: [], // TODO: change into array later
-            retweet: 30,
-        },
-    ]
+    const [tweetsComponents, setTweetsComponents] = React.useState(null)
+
+    function loadData(){
+        fetch('/api/tweets').then(response => {
+            if (response.ok){
+                console.log(response)
+                response.json().then(data => {
+                    console.log(data)
+                    console.log('Total number of tweets: ' + data._metadata.total_count)
+                    data.tweets.forEach(tweet => tweet.image={MaleProfile})
+                    setTweetsComponents(data.tweets.map((tweet) => <TweetBox key={tweet.id} tweet={tweet} onClick={() => handleTweetClick(tweet)} />))
+                })
+            }
+        }).catch(err => {
+            console.log('Error: ' + err)
+        })
+    }
+
+    React.useEffect(() => {
+        loadData()
+    }, [])
+    // const tweets = [
+    //     {
+    //         id: 1,
+    //         timestamp: new Date(2021, 1, 2),
+    //         photo: FemaleProfile,
+    //         name: "Hermione Granger",
+    //         username: "@Hemione Granger",
+    //         content: "Congratulations on finishing your homework! @Twitter",
+    //         likes: 10,
+    //         comments: [
+    //             {
+    //                 timestamp: new Date(2021, 1, 2),
+    //                 photo: MaleProfile,
+    //                 name: "Ron Weasley",
+    //                 username: "@Ron Weasley",
+    //                 content: "Give me a break...",
+    //                 likes: 5,
+    //                 comments: [],
+    //                 retweet: 0,
+    //             }
+    //         ], // TODO: change into array later
+    //         retweet: 5,
+    //     },
+    //     {
+    //         id: 2,
+    //         timestamp: new Date(2021, 1, 2),
+    //         photo: ProfilePicture,
+    //         name: "Twitter",
+    //         username: "@Twitter",
+    //         content: "This is the first ever tweet written on my twitter clone. Happy Birthday!",
+    //         likes: 100,
+    //         comments: [], // TODO: change into array later
+    //         retweet: 30,
+    //     },
+    // ]
 
     const [showTweet, setShowTweet] = React.useState(null)
     const handleTweetClick = (tweet) => {
@@ -73,7 +94,7 @@ export default function Homepage(){
     }
     const closeOpenTweet = () => setShowTweet(null)
 
-    const tweetsComponents = tweets.map((tweet) => <TweetBox key={tweet.id} tweet={tweet} onClick={() => handleTweetClick(tweet)} />)
+    
 
 
     return (

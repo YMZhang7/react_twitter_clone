@@ -26,7 +26,7 @@ export const PeopleCardsContainer = styled.div`
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     padding: 10px;
-    border-right: ${props => props.focus ? "2px solid blue" : "2px solid transparent"};
+    border-right: ${props => props.focus ? "3px solid #1DA1F2" : "3px solid transparent"};
 `
 
 export const Photo = styled.div`

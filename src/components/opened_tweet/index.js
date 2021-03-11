@@ -22,15 +22,29 @@ import TweetBox from "../tweet_box"
 export default function OpenedTweet({tweet, closeTweet}){
     const closeOpenTweet = () => {
         closeTweet()
-        console.log('close tweet')
     }
 
     const TweetWindowClicked = (e) => {
-        console.log('tweet window clicked')
         e.stopPropagation() // avoid closeOpenTweet being called
     }
 
-    let time = tweet && tweet.timestamp.getFullYear() + '/' + (parseInt(tweet.timestamp.getMonth()) + 1).toString() + '/' + tweet.timestamp.getDate()
+    let tweetTime = tweet && new Date(tweet.time)
+    let time = tweet && tweetTime.getFullYear() + '/' + (parseInt(tweetTime.getMonth()) + 1).toString() + '/' + tweetTime.getDate()
+
+    const [commentComponents, setCommentComponents] = React.useState(<div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>)
+    React.useEffect(() => {
+        tweet && fetch(`/api/tweets?tweetId=${tweet.comments}`).then(response => {
+            console.log(response)
+            if (response.ok){
+                response.json().then(comments => {
+                    const cComponents = comments.tweets.map(tweet => <TweetBox key={tweet._id} tweet={tweet} />)
+                    setCommentComponents(cComponents)
+                })
+            }
+        }).catch(err => {
+            console.log('Error: ' + err)
+        })
+    }, [tweet])
 
     return(
         <BackgroundScreen show={tweet} onClick={closeOpenTweet}>
@@ -55,8 +69,9 @@ export default function OpenedTweet({tweet, closeTweet}){
                     <IconContainer hoverColor="#1DA1F2"><FiShare /></IconContainer>
                 </TweetActionsBar>
                 <TweetCommentsContainer>
-                    {tweet && (tweet.comments.length === 0) && <div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>}
-                    {tweet && (tweet.comments.length > 0 && <TweetBox tweet={tweet.comments[0]} />)}
+                    {/* {tweet && (tweet.comments.length === 0) && <div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>}
+                    {tweet && (tweet.comments.length > 0 && <TweetBox tweet={tweet.comments[0]} />)} */}
+                    {commentComponents}
                 </TweetCommentsContainer>
             </TweetWindow>
         </BackgroundScreen>

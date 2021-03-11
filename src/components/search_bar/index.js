@@ -41,6 +41,7 @@ export const SearchArea = styled.input`
     border: none;
     outline: none;
     background-color: transparent;
+    padding: 0px;
     ::placeholder{
         font-size: 15px;
         color: #5B7083;
