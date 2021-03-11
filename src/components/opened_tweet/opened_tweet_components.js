@@ -85,7 +85,7 @@ export const TweetActionsBar = styled.div`
     /* background-color: rgba(29, 161, 242, 0.1); */
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 `
 

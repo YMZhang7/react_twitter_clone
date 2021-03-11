@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.6.2",
     "express": "^4.17.1",
     "mongodb": "^3.6.4",
+    "npm-watch": "^0.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.1.0",
@@ -20,7 +21,11 @@
     "start": "node src/server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": "src/"
   },
   "proxy": "https://localhost:3000",
   "eslintConfig": {
