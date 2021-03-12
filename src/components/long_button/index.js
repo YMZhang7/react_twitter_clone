@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export default function LongButton(props){
     return (
-        <ButtonContainer width={props.width}>{props.label}</ButtonContainer>
+        <ButtonContainer width={props.width} onClick={props.onClick}>{props.label}</ButtonContainer>
     )
 }
 

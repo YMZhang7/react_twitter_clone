@@ -2,6 +2,10 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const mongo = require('mongodb')
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 const MongoClient = mongo.MongoClient
 const dbUrl = 'mongodb://localhost'
 let db
@@ -40,3 +44,18 @@ app.get('/api/tweets', (req, res) => {
 app.get('*', (req, res) =>{
     res.sendFile(path.resolve(__dirname, '../../build/index.html'));
 });
+
+app.post('/api/tweets', (req, res) => {
+    // console.log(req.body)
+    const newTweet = req.body
+    newTweet.sender = new mongo.ObjectId(newTweet.sender)
+    let id
+    db.collection('tweets').insert(newTweet, (err, doc) => {
+        if (err)    console.log("Error when inserting: " + err)
+        id = doc._id 
+    })
+    newTweet._id = id
+    // console.log(newTweet)
+    res.json(newTweet)
+    // res.json({})
+})
