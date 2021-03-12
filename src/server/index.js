@@ -19,26 +19,15 @@ MongoClient.connect(dbUrl, (err, client) => {
 app.use(express.static(path.resolve(__dirname, '../../build')));
 
 app.get('/api/tweets', (req, res) => {
-    if (req.query.tweetId != null){
-        let selected = []
-        db.collection('tweets').find({_id: new mongo.ObjectId(req.query.tweetId)}).toArray().then(comments => {
-            selected.push(comments[0])
-            console.log(selected)
-        }).then(() => {
-            console.log(selected)
-            res.json({tweets: selected})
-        })
-    } else {
-        db.collection('tweets').find().toArray().then(tweets => {
-            const metadata = {
-                total_count: tweets.length,
-            }
-            res.json({_metadata: metadata, tweets: tweets})
-        }).catch(err => {
-            console.log('Error: ' + err)
-            res.status(500).json({ message: `Internal Server Error: ${err}`})
-        })
-    }
+    db.collection('tweets').find().toArray().then(tweets => {
+        const metadata = {
+            total_count: tweets.length,
+        }
+        res.json({_metadata: metadata, tweets: tweets})
+    }).catch(err => {
+        console.log('Error: ' + err)
+        res.status(500).json({ message: `Internal Server Error: ${err}`})
+    })
 })
 
 app.get('*', (req, res) =>{
@@ -46,16 +35,26 @@ app.get('*', (req, res) =>{
 });
 
 app.post('/api/tweets', (req, res) => {
-    // console.log(req.body)
-    const newTweet = req.body
-    newTweet.sender = new mongo.ObjectId(newTweet.sender)
-    let id
-    db.collection('tweets').insert(newTweet, (err, doc) => {
-        if (err)    console.log("Error when inserting: " + err)
-        id = doc._id 
-    })
-    newTweet._id = id
-    // console.log(newTweet)
-    res.json(newTweet)
-    // res.json({})
+    if (req.body.getComments){
+        const commentsId = req.body.comments
+        let criteria = []
+        for (let id of commentsId){
+            criteria.push(new mongo.ObjectId(id))
+        }
+        db.collection('tweets').find({"_id": {"$in": criteria}}).toArray().then(tweets => {
+            console.log(tweets)
+            res.json({comments: tweets})
+        })
+    } else {
+        const newTweet = req.body
+        newTweet.sender = new mongo.ObjectId(newTweet.sender)
+        let id
+        db.collection('tweets').insert(newTweet, (err, doc) => {
+            if (err)    console.log("Error when inserting: " + err)
+            id = doc._id 
+        })
+        newTweet._id = id
+        // console.log(newTweet)
+        res.json(newTweet)
+    }
 })

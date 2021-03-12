@@ -34,17 +34,28 @@ export default function OpenedTweet({tweet, closeTweet}){
 
     const [commentComponents, setCommentComponents] = React.useState(<div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>)
     React.useEffect(() => {
-        if (tweet && tweet.comments.length > 0){
-            tweet && fetch(`/api/tweets?tweetId=${tweet.comments}`).then(response => {
-                if (response.ok){
-                    response.json().then(comments => {
-                        const cComponents = comments.tweets.map(tweet => <TweetBox key={tweet._id} tweet={tweet} />)
-                        setCommentComponents(cComponents)
+        if (tweet){
+            if (tweet.comments.length > 0){
+                console.log('hhhh')
+                fetch('/api/tweets', {
+                    method: "POST",
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        getComments: true,
+                        comments: tweet.comments,
                     })
-                }
-            }).catch(err => {
-                console.log('Error: ' + err)
-            })
+                }).then(res => res.json())
+                .then(comments => {
+                    console.log(comments.comments)
+                    const cComponents = comments.comments.map(tweet => <TweetBox key={tweet._id} tweet={tweet} />)
+                    setCommentComponents(cComponents)
+                }).catch(err => {
+                    console.log("Error: " + err)
+                })
+            } else {
+                setCommentComponents(<div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>)
+            }
+            
         }
     }, [tweet])
 
