@@ -33,6 +33,9 @@ export default function OpenedTweet({tweet, closeTweet}){
     let time = tweet && tweetTime.getFullYear() + '/' + (parseInt(tweetTime.getMonth()) + 1).toString() + '/' + tweetTime.getDate()
 
     const [commentComponents, setCommentComponents] = React.useState(<div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>)
+    const [commentingMode, setCommentingMode] = React.useState(false)
+    const closeCommentingMode = () => setCommentingMode(false)
+
     React.useEffect(() => {
         if (tweet){
             if (tweet.comments.length > 0){
@@ -55,12 +58,18 @@ export default function OpenedTweet({tweet, closeTweet}){
             } else {
                 setCommentComponents(<div style={{position: "relative", top: "50px"}}>There is no comment to show yet.</div>)
             }
-            
+            setCommentingMode(false)
         }
     }, [tweet])
 
-    const [commentingMode, setCommentingMode] = React.useState(false)
-    const closeCommentingMode = () => setCommentingMode(false)
+    const swish = (comment) => {
+        if (tweet && commentComponents.length > 0){
+            setCommentComponents(prev => [...prev, <TweetBox key={comment._id} tweet={comment} />])
+        } else {
+            setCommentComponents([<TweetBox key={comment._id} tweet={comment} />])
+        }
+        setCommentingMode(false)
+    }
 
     return(
         <BackgroundScreen show={tweet} onClick={closeOpenTweet}>
@@ -85,7 +94,7 @@ export default function OpenedTweet({tweet, closeTweet}){
                     <IconContainer hoverColor="#1DA1F2"><FiShare /></IconContainer>
                 </TweetActionsBar>
                 <TweetCommentsContainer>
-                    {commentingMode ? <ReplyComponent close={closeCommentingMode} /> : commentComponents}
+                    {commentingMode ? <ReplyComponent close={closeCommentingMode} replyTo={tweet && tweet._id} reply={swish} /> : commentComponents}
                 </TweetCommentsContainer>
             </TweetWindow>
         </BackgroundScreen>

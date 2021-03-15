@@ -58,3 +58,16 @@ app.post('/api/tweets', (req, res) => {
         res.json(newTweet)
     }
 })
+
+app.post('/api/tweets/reply', (req, res) => {
+    const newTweet = req.body
+    console.log(newTweet)
+    newTweet.sender = new mongo.ObjectId(newTweet.sender)
+    let id
+    db.collection('tweets').insert(newTweet, (err, doc) => {
+        if (err)    console.log("Error when inserting: " + err)
+        newTweet._id = doc._id 
+    })
+    db.collection('tweets').update({"_id" : new mongo.ObjectId(newTweet.replyTo)}, {$push: {comments: new mongo.ObjectId(newTweet._id)}})
+    res.json(newTweet)
+})

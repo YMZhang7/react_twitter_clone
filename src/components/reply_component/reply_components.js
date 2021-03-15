@@ -83,3 +83,11 @@ export const ButtonContainer = styled.div`
         background-color: rgba(29, 161, 242, 0.1);
     }
 `
+
+export const Photo = styled.div`
+    width: 40px;
+    height: 40px;
+    background: url(${props => props.image});
+    background-size: cover;
+    border-radius: 50%;
+`
