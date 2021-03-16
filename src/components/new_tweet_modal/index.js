@@ -67,9 +67,6 @@ export default function NewTweetModal({height, width, addNewTweet}){
     return(
         <ModalContainer height={height} width={width} focus={isFocus}>
             <UserPhoto photo={ProfilePicture} />
-            {/* <UserPhoto>
-                <Photo image={ProfilePicture} />
-            </UserPhoto> */}
             <TweetEdittingContainer focus={isFocus}>
                 <TopContainer focus={isFocus}>
                     <InputArea placeholder="What's happening?" onFocus={handleFocus} onBlur={handleBlur} onChange={editSwish} />
