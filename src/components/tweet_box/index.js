@@ -16,9 +16,10 @@ import UserPhoto from "../user_photo"
 import UserNameText from "../user_name_text"
 import UserAtText from "../user_at_text"
 import MoreButton from "../more_button"
+import TweetEdittingPopup from "../tweet_editting_popup"
 
 
-export default function TweetBox({ tweet, onClick }){
+export default function TweetBox({ tweet, onClick, deleteTweet }){
     let tweetTime = new Date(tweet.time)
     let time = tweetTime.getFullYear() + '/' + (parseInt(tweetTime.getMonth()) + 1).toString() + '/' + tweetTime.getDate()
 
@@ -27,9 +28,31 @@ export default function TweetBox({ tweet, onClick }){
         e.stopPropagation()
     }
 
+    const [showMoreMenu, setShowMoreMenu] = React.useState(false)
+    const [moreMenuLeft, setMoreMenuLeft] = React.useState(0)
+    const [moreMenuBottom, setMoreMenuBottom] = React.useState(0)
+    function moreButtonClicked(e){
+        e.stopPropagation()
+        console.log(e.target.getBoundingClientRect().left)
+        setMoreMenuLeft(e.target.getBoundingClientRect().left)
+        setMoreMenuBottom(window.innerHeight - e.target.getBoundingClientRect().bottom)
+        setShowMoreMenu(true)
+    }
+
+    function closeMoreMenu(e){
+        e.stopPropagation()
+        setShowMoreMenu(false)
+    }
+
+    function deleteTweetClicked(){
+        setShowMoreMenu(false)
+        deleteTweet(tweet._id)
+    }
+
     return (
         <TweetBoxContainer onClick={onClick}>
-            <MoreButton onClick={preventClick} />
+            <TweetEdittingPopup show={showMoreMenu} close={closeMoreMenu} left={moreMenuLeft} bottom={moreMenuBottom} deleteTweet={deleteTweetClicked} />
+            <MoreButton onClick={moreButtonClicked} />
             <UserPhoto photo={tweet.photo} />
             <ContentContainer>
                 <HeaderContainer>

@@ -31,7 +31,27 @@ import OpenedTweet from "../../components/opened_tweet"
 export default function Homepage(){
     document.title = "Home / Twitter"
 
+    const [tweetsData, setTweetsData] = React.useState([])
     const [tweetsComponents, setTweetsComponents] = React.useState(null)
+
+    function updateData(data){
+        setTweetsData(data)
+        setTweetsComponents(data.map((tweet) => <TweetBox key={tweet._id} id={tweet._id} tweet={tweet} onClick={() => handleTweetClick(tweet)} deleteTweet={deleteTweet} />))
+    }
+
+    function deleteTweet(id){
+        setTweetsData(prev => {
+            let newTweetsData = prev.filter(tweet => tweet._id != id)
+            setTweetsComponents(newTweetsData.map((tweet) => <TweetBox key={tweet._id} id={tweet._id} tweet={tweet} onClick={() => handleTweetClick(tweet)} deleteTweet={deleteTweet} />))
+            return newTweetsData
+        })
+
+        fetch('/api/tweets', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id: id})
+        }).then(response => response.json())
+    }
 
     function loadData(){
         fetch('/api/tweets').then(response => {
@@ -43,7 +63,9 @@ export default function Homepage(){
                     data.tweets.forEach(tweet => {
                         tweet.photo = MaleProfile
                     })
-                    setTweetsComponents(data.tweets.map((tweet) => <TweetBox key={tweet._id} tweet={tweet} onClick={() => handleTweetClick(tweet)} />))
+                    // console.log('hhhhh ' + data.tweets[0]._id)
+                    // setTweetsComponents(data.tweets.map((tweet) => <TweetBox key={tweet._id} id={tweet._id} tweet={tweet} onClick={() => handleTweetClick(tweet)} deleteTweet={deleteTweet} />))
+                    updateData(data.tweets)
                 })
             }
         }).catch(err => {
@@ -65,7 +87,8 @@ export default function Homepage(){
     
     const addNewTweet = (tweet) => {
         console.log(tweetsComponents)
-        setTweetsComponents(prev => [...prev, <TweetBox key={tweet._id} tweet={tweet} onClick={() => handleTweetClick(tweet)} />])
+        setTweetsData(prev => [...prev, tweet])
+        setTweetsComponents(prev => [...prev, <TweetBox key={tweet._id} id={tweet._id} tweet={tweet} onClick={() => handleTweetClick(tweet)} deleteTweet={deleteTweet} />])
     }
 
     return (

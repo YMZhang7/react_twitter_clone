@@ -71,3 +71,12 @@ app.post('/api/tweets/reply', (req, res) => {
     db.collection('tweets').update({"_id" : new mongo.ObjectId(newTweet.replyTo)}, {$push: {comments: new mongo.ObjectId(newTweet._id)}})
     res.json(newTweet)
 })
+
+app.delete('/api/tweets', (req, res) => {
+    const deleteId = req.body.id
+    console.log(req.body)
+    db.collection('tweets', (err, collection) => {
+        if (err) console.log('Server Deletion Error: ' + err)
+        collection.deleteOne({_id: new mongo.ObjectId(deleteId)}).then(() => res.json({}))
+    })
+})
